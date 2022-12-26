@@ -33,25 +33,25 @@ function typeText(element, text) {
 
 function generateUniqueID() {
   const timestamp = Date.now();
-  return Math.floor(Math.random();
+  return Math.floor(Math.random());
   const hexadecimalString = randomNumber.toString(16);
 
   return 'id-${timestamp}-${hexadecimalString}';
 }
 
-function chatStripe (isAI, value, UniqueId) 
+function chatStripe (isAi, value, uniqueId) 
 {
   return (
     `
-    <div class = "wrapper ${isAI && 'ai'}">
+    <div class = "wrapper ${isAi && 'ai'}">
       <div class = "chat">
         <div className = "profile">
           <img 
-            src = "${isAI ? bot : user}" 
-            alt = "${isAI ? bot : user}" 
+            src = "${isAi ? bot : user}" 
+            alt = "${isAi ? bot : user}" 
           />
         </div>
-        <div className = "message" id=${UniqueId}>${value}></div>
+        <div className = "message" id=${uniqueId}>${value}></div>
       </div>
     </div>
     `
@@ -70,19 +70,19 @@ const handleSubmit = async (e) => {
   form.reset();
 
   //bot's chatstripe
-  const UniqueId = generateUniqueID();
-  chatContainer.innerHTML += chatStripe(true, " ", UniqueId);
+  const uniqueId = generateUniqueID();
+  chatContainer.innerHTML += chatStripe(true, " ", uniqueId);
 
   chatContainer.scrollTop = chatContainer.scrollHeight;
 
-  const messageDiv = document.getElementById(UniqueId);
+  const messageDiv = document.getElementById(uniqueId);
 
   loader(messageDiv);
 }
 
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('keyup', (e) => {
-  if (e.keyCode === 13) {
+  if (e.keyCode === 13 ) {
     handleSubmit(e);
   }
 });
