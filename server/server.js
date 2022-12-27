@@ -15,13 +15,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", async(req, res) => {
-    res.status(200)({
+app.get('/', async(req, res) => {
+    res.status(200).send({
         message: "Hello from UEM_Help",
     });
 });
 
-app.post("/", async(req, res) => {
+app.post('/', async(req, res) => {
     try {
         const prompt = req.body.prompt;
 
@@ -41,7 +41,7 @@ app.post("/", async(req, res) => {
 
     } catch (error) {
         console.error(error)
-        res.status(500).send(error || 'Something went wrong')
+        res.status(500).send({ error })
     }
 });
 
