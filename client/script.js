@@ -33,7 +33,7 @@ function typeText(element, text) {
 
 function generateUniqueID() {
   const timestamp = Date.now();
-  return Math.floor(Math.random());
+  const randomNumber = Math.floor(Math.random());
   const hexadecimalString = randomNumber.toString(16);
 
   return 'id-${timestamp}-${hexadecimalString}';
@@ -47,8 +47,8 @@ function chatStripe (isAi, value, uniqueId)
       <div class = "chat">
         <div class = "profile">
           <img 
-            src = "${isAi ? bot : user}" 
-            alt = "${isAi ? bot : user}" 
+            src = ${isAi ? bot : user}
+            alt = "${isAi ? 'bot' : 'user'}" 
           />
         </div>
         <div class = "message" id=${uniqueId}>${value}></div>
@@ -70,8 +70,8 @@ const handleSubmit = async (e) => {
   form.reset();
 
   //bot's chatstripe
-  const uniqueId = generateUniqueID();
-  chatContainer.innerHTML += chatStripe(true, " ", uniqueId);
+  const uniqueId = generateUniqueID()
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
 
   chatContainer.scrollTop = chatContainer.scrollHeight;
 
@@ -100,7 +100,7 @@ const handleSubmit = async (e) => {
 
     typeText(messageDiv, parsedData);
   } else {
-    const err = await response.json();
+    const err = await response.text();
 
     messageDiv.innerHTML = "Something went wrong";
 
@@ -110,7 +110,9 @@ const handleSubmit = async (e) => {
 
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('keyup', (e) => {
-  if (e.keyCode === 13 ) {
-    handleSubmit(e);
-  }
+    if (event.key === "Enter" ) {
+        handleSubmit(e);
+    }
+
+    event.preventDefault();
 });
