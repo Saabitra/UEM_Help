@@ -9,6 +9,7 @@
 
 body {
   background: #343541;
+  float: right;
 }
 
 #app {
@@ -111,6 +112,31 @@ body {
 .message::-webkit-scrollbar {
   display: none;
 }
+
+.left {
+  width: 20%;
+  float: left;
+  background-color: #060925;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav li {
+  margin: 1px 0;
+    border: 1px solid #999;
+}
+
+.nav li a {
+    display: block;
+    line-height: 3em;
+    width: 100%;
+    text-decoration: none;
+}
+
 
 form {
   width: 60%;
