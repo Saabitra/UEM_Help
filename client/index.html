@@ -11,13 +11,25 @@
     <div id="app">
       <div id="chat_container"></div>
 
-      <form>
+      <form id="form">
         <textarea name="prompt" rows="1" cols="1" placeholder="Let me help you..."></textarea>
         <button type="submit"><img src="assets/send.svg"></button>
       </form>
     </div>
 
 
-    <script type="module" src="script.js"></script>
+    <script type="module" src="script.js">
+
+      var form = document.getElementById("form");
+
+      form.addEventListener("submit", function(event){
+        event.preventDefault();
+
+        var prompt = document.getElementsByName("prompt")[0].value;
+        console.log(prompt);
+
+      })
+      
+    </script>
   </body>
 </html>
